@@ -1,0 +1,17 @@
+{
+    "name": "db-connector",
+    "config": {
+      "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+      "plugin.name": "pgoutput",
+      "database.hostname": "postgres",
+      "database.port": "5432",
+      "database.user": "cdc-test",
+      "database.password": "postgres",
+      "database.dbname": "cdc-test",
+      "database.server.name": "cdc-test",
+      "table.include.list": "public.company"
+    }
+  }
+
+  // Send to container like this:
+    // curl -i -X POST localhost:8083/connectors/ --data "@debezium.json" -H "Content-Type: application/json" -H "Accept:application/json"   
