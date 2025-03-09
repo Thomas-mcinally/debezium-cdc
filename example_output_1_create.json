@@ -5,19 +5,8 @@
       {
         "type": "struct",
         "fields": [
-          {
-            "type": "string",
-            "optional": false,
-            "name": "io.debezium.data.Uuid",
-            "version": 1,
-            "field": "id"
-          },
-          { "type": "string", "optional": false, "field": "name" },
-          {
-            "type": "string",
-            "optional": false,
-            "field": "companies_house_number"
-          }
+          { "type": "int32", "optional": false, "default": 0, "field": "id" },
+          { "type": "string", "optional": true, "field": "name" }
         ],
         "optional": true,
         "name": "pre.public.company.Value",
@@ -26,19 +15,8 @@
       {
         "type": "struct",
         "fields": [
-          {
-            "type": "string",
-            "optional": false,
-            "name": "io.debezium.data.Uuid",
-            "version": 1,
-            "field": "id"
-          },
-          { "type": "string", "optional": false, "field": "name" },
-          {
-            "type": "string",
-            "optional": false,
-            "field": "companies_house_number"
-          }
+          { "type": "int32", "optional": false, "default": 0, "field": "id" },
+          { "type": "string", "optional": true, "field": "name" }
         ],
         "optional": true,
         "name": "pre.public.company.Value",
@@ -97,27 +75,23 @@
   },
   "payload": {
     "before": null,
-    "after": {
-      "id": "a05c72c4-7888-4b31-86e6-4e25eeaa1751",
-      "name": "tom",
-      "companies_house_number": "1212"
-    },
+    "after": { "id": 1, "name": "thomas" },
     "source": {
       "version": "2.4.2.Final",
       "connector": "postgresql",
       "name": "pre",
-      "ts_ms": 1741522884910,
-      "snapshot": "last",
+      "ts_ms": 1741525236341,
+      "snapshot": "false",
       "db": "cdc-test",
-      "sequence": "[null,\"26806952\"]",
+      "sequence": "[null,\"26658848\"]",
       "schema": "public",
       "table": "company",
       "txId": 740,
-      "lsn": 26806952,
+      "lsn": 26658848,
       "xmin": null
     },
-    "op": "r",
-    "ts_ms": 1741522884999,
+    "op": "c",
+    "ts_ms": 1741525237562,
     "transaction": null
   }
 }
