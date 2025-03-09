@@ -1,4 +1,3 @@
-# STILL NOT WORKING 100%, containers keep crashing
 
 ---
 version: "3"
@@ -12,6 +11,8 @@ services:
       - POSTGRES_USER=cdc-test
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=cdc-test
+    command: ["postgres", "-c", "wal_level=logical"]
+
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.1
     environment:
@@ -38,21 +39,10 @@ services:
       GROUP_ID: 1
       CONFIG_STORAGE_TOPIC: connect_configs
       OFFSET_STORAGE_TOPIC: connect_offsets
-      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
-      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
     depends_on: [kafka]
     ports:
       - 8083:8083
-
-  schema-registry:
-    image: confluentinc/cp-schema-registry:7.5.1
-    environment:
-      - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2181
-      - SCHEMA_REGISTRY_HOST_NAME=schema-registry
-      - SCHEMA_REGISTRY_LISTENERS=http://schema-registry:8081,http://localhost:8081
-      - SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL=PLAINTEXT://kafka:9092
-      - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=kafka:9092
-      - SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL=PLAINTEXT
-    ports:
-      - 8081:8081
-    depends_on: [zookeeper, kafka]
+networks:
+  default:
+    name: postgres_debezium_cdc_default
+    external: false

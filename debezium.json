@@ -3,12 +3,12 @@
     "config": {
       "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
       "plugin.name": "pgoutput",
-      "database.hostname": "postgres",
+      "database.hostname": "host.docker.internal",
       "database.port": "5432",
       "database.user": "cdc-test",
       "database.password": "postgres",
       "database.dbname": "cdc-test",
-      "database.server.name": "cdc-test",
+      "topic.prefix": "pre",
       "table.include.list": "public.company"
     }
   }
