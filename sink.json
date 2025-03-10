@@ -1,0 +1,18 @@
+{
+    "name": "jdbc-connector",
+    "config": {
+      "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
+      "tasks.max": "1",  
+      "connection.url": "jdbc:postgresql://db2:5432/cdc-test",  
+      "connection.username": "cdc-test",  
+      "connection.password": "postgres",  
+      "insert.mode": "upsert",  
+      "delete.enabled": "true",  
+      "primary.key.mode": "record_key",
+      "primary.key.fields": "id",
+      "schema.evolution": "basic",  
+      "database.time_zone": "UTC",  
+      "topics": "pre.public.company",
+      "table.name.format": "company"
+    }
+  }
