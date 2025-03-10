@@ -43,7 +43,7 @@ services:
     ports:
       - 9092:9092
 
-  debezium:
+  kafka-connect:
     image: debezium/connect:2.4
     environment:
       BOOTSTRAP_SERVERS: kafka:9092
