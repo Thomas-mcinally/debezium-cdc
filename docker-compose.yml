@@ -15,6 +15,18 @@ services:
     volumes:
       - ./init-scripts:/docker-entrypoint-initdb.d
 
+  db2:
+    image: postgres:15
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=cdc-test
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=cdc-test
+    command: ["postgres", "-c", "wal_level=logical"]
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d
+
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.1
     environment:
