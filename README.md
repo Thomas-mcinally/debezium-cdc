@@ -1,8 +1,10 @@
 # debezium-cdc
+- Debezium is a set of Kafka-Connect source and sink connectors that make it easy to stream database mutations from a database to kafka and/or from kafka into a db
+
 ## Run docker containers
     `docker-compose up`
 
-## Configure debezium to stream updates from company table
+## Setup source connector
     `curl -i -X POST localhost:8083/connectors/ --data "@source.json" -H "Content-Type: application/json" -H "Accept:application/json"`
 
 ## Tail outputs in kafka topic
