@@ -1,4 +1,4 @@
-# debezium-cdc
+# kafka-connect-cdc
 - Debezium is a set of Kafka-Connect source and sink connectors that make it easy to stream database mutations from a database to kafka and/or from kafka into a db
 - This repo gives an example of how to set up replication of the "Company" table from one postgres database to another postgres database, using these source and sink connectors together with kafka-connect. This may be useful in a microservice architecture, where one service wants to asynchronously replicate the state from another services database.
 <img width="1446" alt="image" src="https://github.com/user-attachments/assets/4e15b49c-d03b-45d2-a5da-dc5905641ab2" />
